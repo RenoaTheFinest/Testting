@@ -1,0 +1,116 @@
+-- ======================================
+-- RENOA HUB | MAIN LOADER
+-- ======================================
+
+-- ======================================
+-- ANTI AFK
+-- ======================================
+task.spawn(function()
+    local VirtualUser = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+    end)
+end)
+
+-- ======================================
+-- GLOBAL SAVE/LOAD SYSTEM
+-- ======================================
+local HttpService = game:GetService("HttpService")
+
+function saveHubSettings()
+    pcall(function()
+        writefile("renoa_hub_settings.json", HttpService:JSONEncode(getgenv().HubSettings))
+    end)
+end
+
+function loadHubSettings()
+    local ok, data = pcall(function()
+        return readfile("renoa_hub_settings.json")
+    end)
+    if ok and data then
+        getgenv().HubSettings = HttpService:JSONDecode(data)
+    else
+        getgenv().HubSettings = {}
+    end
+end
+
+loadHubSettings()
+
+-- ======================================
+-- LOAD CUSTOM UI
+-- ======================================
+print("[Hub] Loading Renoa UI...")
+
+local RenoaUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/afoolwhowantstopursueahighmind-stack/The-foolish-man-alive-will-be-back-as-greatest-man-alive/refs/heads/main/Aiueio"))()
+
+local Window = RenoaUI.new("Renoa Hub", "By Renoa The Finest")
+
+getgenv().Window = Window
+getgenv().RenoaUI = RenoaUI
+
+-- ======================================
+-- ACTIVITY STATUS SYSTEM
+-- ======================================
+if not getgenv().ActivityStatus then
+    getgenv().ActivityStatus = {
+        current = "Idle",
+        trigger = false,
+    }
+end
+
+-- ======================================
+-- TAB LOADER
+-- ======================================
+local function loadTab(url, name)
+    task.spawn(function()
+        local attempts = 0
+        local maxAttempts = 10
+        
+        while attempts < maxAttempts do
+            local ok, err = pcall(function()
+                loadstring(game:HttpGet(url))()
+            end)
+            
+            if ok then
+                print("[Hub] ✅ " .. name)
+                return
+            end
+            
+            attempts = attempts + 1
+            task.wait(0.5)
+        end
+        
+        warn("[Hub] ❌ Failed to load: " .. name)
+    end)
+end
+
+-- ======================================
+-- LOAD TABS (INFO FIRST)
+-- ======================================
+task.spawn(function()
+    -- Info tab first (top of sidebar)
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Info.Lua", "Info")
+    
+    -- Small delay to ensure Info creates first tab
+    task.wait(0.5)
+    
+    -- Then the rest
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/ActivityInfo.Lua", "Activity Info")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Webhook.Lua", "Webhook")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Auto.Lua", "Auto")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Eggs.Lua", "Eggs")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Rift.Lua", "Rift")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Event.Lua", "Event")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Enchant.Lua", "Enchant")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Potion.Lua", "Potions")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Pets.Lua", "Pets")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Shrine.Lua", "Shrine")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Quest.Lua", "Quest")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Diceboard.Lua", "Diceboard")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Trade.Lua", "Trade")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Teleport.Lua", "Teleport")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Other.Lua", "Other")
+end)
+
+print("[Hub] All tabs loading...")
