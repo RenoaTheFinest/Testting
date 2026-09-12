@@ -1,5 +1,5 @@
 -- ======================================
--- RENOA HUB | MAIN LOADER
+-- RENOA HUB | MAIN LOADER (WINDUI VERSION)
 -- ======================================
 
 -- ======================================
@@ -38,77 +38,39 @@ end
 loadHubSettings()
 
 -- ======================================
--- LOAD CUSTOM UI
+-- LOAD WINDUI
 -- ======================================
-print("[Hub] Loading Renoa UI...")
+print("[Hub] Loading WindUI...")
 
-local RenoaUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/afoolwhowantstopursueahighmind-stack/The-foolish-man-alive-will-be-back-as-greatest-man-alive/refs/heads/main/Aiueio"))()
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
--- ======================================
--- FIX: Override broken CreateLabel
--- ======================================
-RenoaUI.CreateLabel = function(self, text)
-    local tab = self.ActiveTab
-    if not tab then return end
-    
-    local label = Instance.new("TextLabel")
-    label.Name = "Label"
-    label.Size = UDim2.new(1, 0, 0, 16)
-    label.BackgroundTransparency = 1
-    label.Text = tostring(text or "")
-    label.TextColor3 = Color3.fromRGB(150, 150, 150)
-    label.TextSize = 11
-    label.Font = Enum.Font.GothamMedium
-    label.TextXAlignment = Enum.TextXAlignment.Left
-    label.TextWrapped = true
-    label.AutomaticSize = Enum.AutomaticSize.Y
-    label.Parent = tab.Content
-    
-    label.SetText = function(self, txt)
-        self.Text = tostring(txt or "")
-    end
-    
-    return label
-end
+local Window = WindUI:CreateWindow({
+    Title = "Renoa Hub",
+    Icon = "door-open",
+    Author = "Bubblegum Simulator Infinity",
+    Folder = "RenoaHub",
+    Size = UDim2.fromOffset(420, 320),
+    Transparent = true,
+    Theme = "Dark",
+    SideBarWidth = 160,
+    HasOutline = true,
+    User = {
+        Enabled = true,
+        Anonymous = true,
+    },
+})
 
--- ======================================
--- FIX: Override broken CreateDropdown (safety)
--- ======================================
-local originalCreateDropdown = RenoaUI.CreateDropdown
-RenoaUI.CreateDropdown = function(self, config)
-    if type(config) ~= "table" then return nil end
-    
-    -- Normalize CurrentOption
-    if config.MultipleOptions then
-        if type(config.CurrentOption) == "string" then
-            config.CurrentOption = {config.CurrentOption}
-        elseif type(config.CurrentOption) ~= "table" then
-            config.CurrentOption = {}
-        end
-    else
-        if type(config.CurrentOption) == "table" then
-            config.CurrentOption = tostring(config.CurrentOption[1] or "")
-        elseif type(config.CurrentOption) ~= "string" then
-            config.CurrentOption = ""
-        end
-    end
-    
-    -- Normalize Options
-    if type(config.Options) == "table" then
-        for i, opt in ipairs(config.Options) do
-            if type(opt) ~= "string" then
-                config.Options[i] = tostring(opt)
-            end
-        end
-    end
-    
-    return originalCreateDropdown(self, config)
-end
-
-local Window = RenoaUI.new("Renoa Hub", "By Renoa The Finest")
+Window:EditOpenButton({
+    Title = "Renoa Hub",
+    Icon = "monitor",
+    CornerRadius = UDim.new(0, 16),
+    StrokeThickness = 2,
+    Color = ColorSequence.new(Color3.fromHex("8B00FF"), Color3.fromHex("B84DFF")),
+    OnlyMobile = false,
+})
 
 getgenv().Window = Window
-getgenv().RenoaUI = RenoaUI
+getgenv().WindUI = WindUI
 
 -- ======================================
 -- ACTIVITY STATUS SYSTEM
@@ -127,6 +89,7 @@ local function loadTab(url, name)
     local ok, err = pcall(function()
         loadstring(game:HttpGet(url))()
     end)
+    
     if ok then
         print("[Hub] ✅ " .. name)
         return true
@@ -137,39 +100,54 @@ local function loadTab(url, name)
 end
 
 -- ======================================
--- LOAD TABS
+-- LOAD TABS SEQUENTIALLY
 -- ======================================
 task.spawn(function()
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Info.Lua", "Info")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Activity%20webhook", "Activity Info")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Webhook", "Webhook")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Auto", "Auto")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Eggs", "Eggs")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Rift", "Rift")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Event", "Event")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Enchant", "Enchant")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Potion", "Potions")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Pets", "Pets")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Shrine", "Shrine")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Quest", "Quest")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Dice%20Board", "Dice Board")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Trade", "Trade")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Teleport", "Teleport")
-    task.wait(0.5)
+    task.wait(0.3)
+    
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Misc", "Misc")
 end)
 
