@@ -85,9 +85,11 @@ end
 -- ======================================
 -- TAB LOADER
 -- ======================================
-local function loadTab(url, name)
+local BASE_URL = "https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/"
+
+local function loadTab(fileName, name)
     local ok, err = pcall(function()
-        loadstring(game:HttpGet(url))()
+        loadstring(game:HttpGet(BASE_URL .. fileName))()
     end)
     
     if ok then
@@ -103,52 +105,52 @@ end
 -- LOAD TABS SEQUENTIALLY
 -- ======================================
 task.spawn(function()
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Info.Lua", "Info")
+    loadTab("Info.Lua", "Info")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Activity%20webhook", "Activity Info")
+    loadTab("ActivityInfo.Lua", "Activity Info")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Webhook", "Webhook")
+    loadTab("Webhook.Lua", "Webhook")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Auto", "Auto")
+    loadTab("Auto.Lua", "Auto")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Eggs", "Eggs")
+    loadTab("Eggs.Lua", "Eggs")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Rift", "Rift")
+    loadTab("Rift.Lua", "Rift")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Event", "Event")
+    loadTab("Event.Lua", "Event")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Enchant", "Enchant")
+    loadTab("Enchant.Lua", "Enchant")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Potion", "Potions")
+    loadTab("Potion.Lua", "Potions")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Pets", "Pets")
+    loadTab("Pets.Lua", "Pets")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Shrine", "Shrine")
+    loadTab("Shrine.Lua", "Shrine")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Quest", "Quest")
+    loadTab("Quest.Lua", "Quest")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Dice%20Board", "Dice Board")
+    loadTab("Diceboard.Lua", "Dice Board")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Trade", "Trade")
+    loadTab("Trade.lua", "Trade")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Teleport", "Teleport")
+    loadTab("Teleport.Lua", "Teleport")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Misc", "Misc")
+    loadTab("Other.Lua", "Other")
 end)
 
 print("[Hub] All tabs loading...")
