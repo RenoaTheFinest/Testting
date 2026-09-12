@@ -106,49 +106,49 @@ task.spawn(function()
     loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Info.Lua", "Info")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Activity%20webhook", "Activity Info")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Activity%20webhook", "Activity Info")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Webhook", "Webhook")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Webhook", "Webhook")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Auto", "Auto")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Auto", "Auto")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Eggs", "Eggs")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Eggs", "Eggs")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Rift", "Rift")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Rift", "Rift")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Event", "Event")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Event", "Event")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Enchant", "Enchant")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Enchant", "Enchant")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Potion", "Potions")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Potion", "Potions")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Pets", "Pets")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Pets", "Pets")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Shrine", "Shrine")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Shrine", "Shrine")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Quest", "Quest")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Quest", "Quest")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Dice%20Board", "Dice Board")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Dice%20Board", "Dice Board")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Trade", "Trade")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Trade", "Trade")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Teleport", "Teleport")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Teleport", "Teleport")
     task.wait(0.3)
     
-    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Permen-karet-sim/refs/heads/main/Misc", "Misc")
+    loadTab("https://raw.githubusercontent.com/AlucardSavage28/Alucardsavage28/refs/heads/main/Misc", "Misc")
 end)
 
 print("[Hub] All tabs loading...")
