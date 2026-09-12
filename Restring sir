@@ -56,7 +56,7 @@ local Window = WindUI:CreateWindow({
     HasOutline = true,
     User = {
         Enabled = true,
-        Anonymous = true,
+        Anonymous = false,
     },
 })
 
